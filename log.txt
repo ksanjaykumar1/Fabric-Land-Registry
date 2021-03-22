@@ -1,0 +1,2 @@
+Installed chaincodes on peer:
+Package ID: dRealEstate_1:1afd5a7ab9d7914a713e675c7f9b9182b930c4dc73209813f81be4ab057d81eb, Label: dRealEstate_1
