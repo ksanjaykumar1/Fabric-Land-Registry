@@ -21,6 +21,7 @@ import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
 import Lands from './components/land/Lands';
 import LandHistory from './components/land/LandHistory';
+import AddLand from './components/land/AddLand';
 
 
 if(localStorage.token){
@@ -48,6 +49,7 @@ const  App= () =>{
             <Route exact path="/login" component={Login}/>
             <PrivateRoute exact path="/dashboard" component={Dashboard}/>
             <PrivateRoute exact path="/create-profile" component={CreateProfile}/>
+            
             <PrivateRoute exact path="/edit-profile" component={EditProfile}/>
             {/* <PrivateRoute exact path="/add-experience" component={AddExperience}/> */}
             <Route exact path='/profiles' component={Profiles}/>
@@ -55,6 +57,7 @@ const  App= () =>{
 
             <Route exact path='/lands' component={Lands}/>
             <Route exact path='/landhistory/:landId' component={LandHistory}/>
+            <PrivateRoute exact path="/add-land" component={AddLand}/>
           </Switch>
         </section>
       </Fragment>

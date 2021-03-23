@@ -10,6 +10,7 @@ import {logout} from '../../actions/auth'
   <ul>
     <li><Link to="/profiles">Profiles</Link></li>
     <li><Link to="/lands">Properties</Link></li>
+    <li><Link to="/add-land">Add Lands</Link></li>
     {/* <li><Link to="/posts">Posts</Link></li> */}
     <li><Link to="/dashboard">
     <i className="fas fa-user"></i>{''}
@@ -26,7 +27,9 @@ import {logout} from '../../actions/auth'
   const guestLinks =( <ul>
     <li><Link to="/profiles">Sellers</Link></li>
     <li><Link to="/lands">Lands</Link></li>
+    
     <li><Link to="/register">Register</Link></li>
+
     <li><Link to="/login">Login</Link></li>
   </ul>)
     return (

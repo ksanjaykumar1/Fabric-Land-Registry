@@ -156,6 +156,47 @@ export const buyLand =(name,landID) => async dispatch =>{
 
 }
 
+//add land
+
+export const addLand =(formData) => async dispatch =>{
+
+    // console.log(name)
+
+    try {
+        
+        const config = {
+            header : {
+              'Content-Type':'application/json'  
+            }
+        }
+       
+        const res = await axios.post('/api/fabric/channels/mychannel/chaincodes/dRealEstate',formData,config)
+        dispatch({
+            type: BUY_LAND,
+        })
+
+        dispatch(setAlert(`Land was succesfully added  to fabric network `, 'success',20000))
+
+       
+        // history.push('/dashboard')
+        
+
+    } catch (err) {
+
+        dispatch({
+            type: LAND_ERROR,
+            payload : {msg: err.response.statusText, status: err.response.status}
+        })
+        
+        const errors = err.response.data.errors;
+ 
+        if(errors){
+        errors.forEach(error =>dispatch(setAlert(error.msg,'danger')))
+        }
+    }
+
+}
+
 //get Land History 
 
 export const landHistory =(landID) => async dispatch =>{
