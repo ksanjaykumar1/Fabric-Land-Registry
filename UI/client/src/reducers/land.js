@@ -5,7 +5,8 @@ import { GET_LAND ,
     GET_LANDS , 
     GET_LAND_HISTORY,
     FABRIC_REGISTER_ERROR,
-    FABRIC_REGISTER} from "../actions/types";
+    FABRIC_REGISTER,
+    NO_LAND_ERROR} from "../actions/types";
 
 const intialState={
     land:[],
@@ -64,6 +65,11 @@ export default function(state = intialState,action){
                 error:payload,
                 loading:false
 
+            }
+        case NO_LAND_ERROR:
+            return{
+                ...state,
+                loading:false
             }
             
         default:

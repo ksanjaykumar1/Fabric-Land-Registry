@@ -11,11 +11,12 @@ const UserLands = ({land:{land,loading},getLands,getCurrentOwnerLands, profile:{
 
     useEffect(() => {
         
-        getCurrentOwnerLands(profile.fabricUsername)
+        
+            getCurrentOwnerLands(profile.fabricUsername)
     }, [])
     return (
         <div>
-            {loading ?<Spinner/>:
+            {typeof land !== 'object'? <div>You have not list property in your name</div>:
             <Fragment>
                 <h1 className="large text-primary"> Your Properties</h1>
                

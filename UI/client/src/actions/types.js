@@ -26,9 +26,11 @@ export const LAND_ERROR = 'LAND_ERROR';
 export const CLEAR_LAND = 'CLEAR_LAND';
 export const BUY_LAND = 'BUY_LAND';
 export const GET_LAND_HISTORY = 'GET_LAND_HISTORY';
+export const NO_LAND_ERROR ='NO_LAND_ERROR'
 
 export const FABRIC_REGISTER_ERROR ='FABRIC_REGISTER_ERROR'
 export const FABRIC_REGISTER ='FABRIC_REGISTER'
+
 // export const DELETE_POST = 'DELETE_POST';
 // export const ADD_POST = 'ADD_POST';
 // export const ADD_COMMENT = 'ADD_COMMENT';

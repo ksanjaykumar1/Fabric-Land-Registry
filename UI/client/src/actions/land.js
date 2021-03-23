@@ -3,7 +3,7 @@ import {setAlert} from './alert'
 
 import {
     GET_LAND , LAND_ERROR, CLEAR_LAND,  GET_LANDS , BUY_LAND, GET_LAND_HISTORY,
-    FABRIC_REGISTER,FABRIC_REGISTER_ERROR
+    FABRIC_REGISTER,FABRIC_REGISTER_ERROR ,NO_LAND_ERROR
 } from './types'
 
 
@@ -75,8 +75,8 @@ export const getCurrentOwnerLands =(ownerName) => async dispatch =>{
     } catch (err) {
 
         dispatch({
-            type: LAND_ERROR,
-            payload : {msg: err.response.statusText, status: err.response.status}
+            type: NO_LAND_ERROR,
+            // payload : {msg: err.response.statusText, status: err.response.status}
         })
         
     }
