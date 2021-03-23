@@ -11,18 +11,16 @@ const EditProfile = ({
 
     
 
-    const [formData,setFormData]= useState({
-        company: '',
-        website: '',
-        location: '',
-        status: '',
-        skills: '',
-        githubusername: '',
-        bio: '',
-        linkedin: '',
-        email:''
-
-    })
+      const [formData,setFormData]= useState({
+        city:'',
+        status:"",
+        bio:"",
+        phoneNumber:"",
+        email:"",
+        address:"",
+        fabricUsername:""
+  
+      })
 
     useEffect(() => {
         if (!profile) getCurrentProfile();
@@ -39,18 +37,16 @@ const EditProfile = ({
           setFormData(profileData);
         }
       }, [loading, getCurrentProfile, profile]);
-    const {
-        company,
-        website,
-        location,
+      const {
+        city,
         status,
-        skills,
-        githubusername,
         bio,
-        linkedin,
-        email
-
-    }= formData
+        phoneNumber,
+        email,
+        address,
+        fabricUsername
+  
+      }= formData
 
     const [displaySocialInputs, toggleSocialInputs] = useState(false)
 
@@ -66,98 +62,76 @@ const EditProfile = ({
     }
     
     return (
-       <Fragment>
-             <h1 className="large text-primary">
-        Create Your Profile
-      </h1>
-      <p className="lead">
-        <i className="fas fa-user"></i> Let's get some information to make your
-        profile stand out
-      </p>
-      <small>* = required field</small>
-      <form className="form" onSubmit={(e)=>onSubmit(e)}>
-        <div className="form-group">
-          <select name="status" value={status} onChange={e=>onChange(e)}>
-            <option value="0">* Select Professional Status</option>
-            <option value="Developer">Developer</option>
-            <option value="Junior Developer">Junior Developer</option>
-            <option value="Senior Developer">Senior Developer</option>
-            <option value="Manager">Manager</option>
-            <option value="Student or Learning">Student or Learning</option>
-            <option value="Instructor">Instructor or Teacher</option>
-            <option value="Intern">Intern</option>
-            <option value="Other">Other</option>
-          </select>
-          <small className="form-text"
-            >Give us an idea of where you are at in your career</small
-          >
-        </div>
-        <div className="form-group">
-          <input type="text" placeholder="Company" name="company" value={company} onChange={e=>onChange(e)}/>
-          <small className="form-text"
-            >Could be your own company or one you work for</small
-          >
-        </div>
-        <div className="form-group">
-          <input type="text" placeholder="Website" name="website" value={website} onChange={e=>onChange(e)}/>
-          <small className="form-text"
-            >Could be your own or a company website</small
-          >
-        </div>
-        <div className="form-group">
-          <input type="text" placeholder="Location" name="location" value={location} onChange={e=>onChange(e)} />
-          <small className="form-text"
-            >City & state suggested (eg. Boston, MA)</small
-          >
-        </div>
-        <div className="form-group">
-          <input type="text" placeholder="* Skills" name="skills" value={skills} onChange={e=>onChange(e)} />
-          <small className="form-text"
-            >Please use comma separated values (eg.
-            HTML,CSS,JavaScript,PHP)</small
-          >
-        </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Github Username"
-            name="githubusername"
-            value={githubusername} onChange={e=>onChange(e)}
-          />
-          <small className="form-text"
-            >If you want your latest repos and a Github link, include your
-            username</small
-          >
-        </div>
-        <div className="form-group">
-          <textarea placeholder="A short bio of yourself" name="bio" value={bio} onChange={e=>onChange(e)}></textarea>
-          <small className="form-text">Tell us a little about yourself</small>
-        </div>
+      <Fragment>
+            <h1 className="large text-primary">
+       Create Your Profile
+     </h1>
+     <p className="lead">
+       <i className="fas fa-user"></i> Let's get some information to make your
+       profile stand out
+     </p>
+     <small>* = required field</small>
+     <form className="form" onSubmit={(e)=>onSubmit(e)}>
+       <div className="form-group">
+         <select name="status" value={status} onChange={e=>onChange(e)}>
+         <option value="0">* Select your Status</option>
+           <option value="Seller">Seller</option>
+           <option value="Developer">Buyer</option>
+           <option value="Both">Both</option>
+           <option value="Broker">Broker</option>
+           <option value="Banker">Banker</option>
+           <option value="Managment">Managment</option>
+         </select>
+         <small className="form-text"
+           >Give us an idea of what are you trying to acheive using this</small
+         >
+       </div>
 
-        <div className="my-2">
-          <button onClick={()=>toggleSocialInputs(!displaySocialInputs)} type="button" className="btn btn-light">
-            Add Social Network Links
-          </button>
-          <span>Optional</span>
-        </div>
-        {displaySocialInputs && <Fragment>
+       <div className="form-group">
+         <input type="text" placeholder="City" name="city" value={city} onChange={e=>onChange(e)} />
+         <small className="form-text"
+           >Which City are u from. Suggested (eg. Bangalore, Delhi)</small
+         >
+       </div>
+       <div className="form-group">
+         <input type="text" placeholder="Address" name="address" value={address} onChange={e=>onChange(e)} />
+         <small className="form-text"
+           >Enter ur address </small
+         >
+       </div>
+       <div className="form-group">
+         <textarea placeholder="A short bio of yourself" name="bio" value={bio} onChange={e=>onChange(e)}></textarea>
+         <small className="form-text">Tell us a little about yourself</small>
+       </div>
+       <div className="form-group">
+         <textarea placeholder="" name="fabricUsername" value={fabricUsername} ></textarea>
+         <small className="form-text">Your fabric Username</small>
+       </div>
+       <div className="my-2">
+         <button onClick={()=>toggleSocialInputs(!displaySocialInputs)} type="button" className="btn btn-light">
+           Add Your  Contact  Details
+         </button>
+         <span>Optional</span>
+       </div>
+       {displaySocialInputs && <Fragment>
 
-        <div className="form-group social-input">
-          <i className="fab fa-linkedin fa-2x"></i>
-          <input type="text" placeholder="Linkedin URL" name="linkedin"  value={linkedin} onChange={e=>onChange(e)}/>
-        </div>
+       <div className="form-group social-input">
+         <i className="fas fa-phone fa-2x"></i>
+         <input type="text" placeholder="Phone Number" name="phoneNumber"  value={phoneNumber} onChange={e=>onChange(e)}/>
+       </div>
 
-        <div className="form-group social-input">
-          <i className="fab fa-gmail fa-2x"></i>
-          <input type="text" placeholder="Email Id" name="email" value={email} onChange={e=>onChange(e)} />
-        </div>
-            </Fragment>}
-       
-        <input type="submit" className="btn btn-primary my-1" />
-        <Link className="btn btn-light my-1" to="/dashboard">Go Back</Link>
-      </form>
-      </Fragment>
-    )
+       <div className="form-group social-input">
+         {/* <i className="fab fa-gmail fa-2x"></i> */}
+         <i className="fas fa-envelope-square fa-2x"></i>
+         <input type="text" placeholder="Email Id" name="email" value={email} onChange={e=>onChange(e)} />
+       </div>
+           </Fragment>}
+      
+       <input type="submit" className="btn btn-primary my-1" />
+       <Link className="btn btn-light my-1" to="/dashboard">Go Back</Link>
+     </form>
+     </Fragment>
+   )
 }
 
 const mapStateToProps =state =>({

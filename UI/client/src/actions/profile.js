@@ -6,7 +6,9 @@ import {
     GET_PROFILES,
     PROFILE_ERROR,
     UPDATE_PROFILE,
-    CLEAR_PROFILE
+    CLEAR_PROFILE,
+    FABRIC_REGISTER_ERROR,
+    FABRIC_REGISTER
 } from './types'
 
 // GET current users profile
@@ -101,6 +103,48 @@ export const createProfile = (formData, history,edit=false)=> async dispatch =>{
 
         dispatch({
             type: PROFILE_ERROR,
+            payload : {msg: err.response.statusText, status: err.response.status}
+        })
+        
+        const errors = err.response.data.errors;
+ 
+        if(errors){
+        errors.forEach(error =>dispatch(setAlert(error.msg,'danger')))
+        }
+    }
+
+}
+
+// add fabric username 
+
+export const addUsername = (name)=> async dispatch =>{
+
+    try {
+        
+        const config = {
+            header : {
+              'Content-Type':'application/json'  
+            }
+        }
+        const formData ={
+            fabricUsername:name
+        }
+        const res = await axios.post('/api/profile',formData,config)
+        dispatch({
+            type: FABRIC_REGISTER,
+            payload : res.data
+        })
+
+        dispatch(setAlert('Username added into profile details', 'success'))
+
+        // if(!edit){
+        //     history.push('/dashboard')
+        // }
+
+    } catch (err) {
+
+        dispatch({
+            type: FABRIC_REGISTER_ERROR,
             payload : {msg: err.response.statusText, status: err.response.status}
         })
         

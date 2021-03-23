@@ -50,6 +50,7 @@ router.post('/', [auth , [
        phoneNumber,
        email,
        address,
+       fabricUsername,
         // spread the rest of the fields we don't need to check
         ...rest
       } = req.body;
@@ -63,6 +64,10 @@ router.post('/', [auth , [
       if(phoneNumber) profileFields.phoneNumber=phoneNumber;
       if(address) profileFields.address=address;
       if(email)profileFields.email= email;
+      if(fabricUsername){
+        profileFields.fabricUsername= fabricUsername;
+        profileFields.fabricAccount=true;
+      }
     //   if(skills) {
     //       profileFields.skills = skills.split(',').map(skill => skill.trim());
 

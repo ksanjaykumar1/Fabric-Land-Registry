@@ -8,9 +8,9 @@ import {logout} from '../../actions/auth'
 
   const authLinks =( 
   <ul>
-    <li><Link to="/profiles">Sellers</Link></li>
-    <li><Link to="/lands">Lands</Link></li>
-    <li><Link to="/posts">Posts</Link></li>
+    <li><Link to="/profiles">Profiles</Link></li>
+    <li><Link to="/lands">Properties</Link></li>
+    {/* <li><Link to="/posts">Posts</Link></li> */}
     <li><Link to="/dashboard">
     <i className="fas fa-user"></i>{''}
     <span className='hide-sm'></span>Dashboard</Link></li>

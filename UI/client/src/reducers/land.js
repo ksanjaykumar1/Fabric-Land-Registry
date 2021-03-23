@@ -1,11 +1,20 @@
-import { GET_LAND , LAND_ERROR, CLEAR_LAND, UPDATE_LAND, GET_LANDS , GET_LAND_HISTORY} from "../actions/types";
+import { GET_LAND , 
+    LAND_ERROR, 
+    CLEAR_LAND, 
+    UPDATE_LAND, 
+    GET_LANDS , 
+    GET_LAND_HISTORY,
+    FABRIC_REGISTER_ERROR,
+    FABRIC_REGISTER} from "../actions/types";
 
 const intialState={
     land:[],
     alllands:[],
     landhistory:[],
     loading: true,
-    error :{}
+    error :{},
+    username:'',
+    orgName:''
 }
 
 export default function(state = intialState,action){
@@ -43,6 +52,19 @@ export default function(state = intialState,action){
             loading:false
 
            }
+        case FABRIC_REGISTER :
+            return{
+                ...state,
+                username:payload,
+                loading:false
+        }
+        case FABRIC_REGISTER_ERROR:
+            return{
+                ...state,
+                error:payload,
+                loading:false
+
+            }
             
         default:
             return state;

@@ -19,7 +19,7 @@ const ProfileSchema = new mongoose.Schema({
   bio: {
     type: String
   },
-  phonenNumber: {
+  phoneNumber: {
     type: String
   },
   email: {
@@ -36,6 +36,14 @@ const ProfileSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
+  fabricUsername: {
+    type: String
+  },
+  fabricAccount: {
+    type: Boolean,
+    default: false
+  },
+
   date: {
     type: Date,
     default: Date.now

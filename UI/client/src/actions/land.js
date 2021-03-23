@@ -2,14 +2,64 @@ import axios from 'axios'
 import {setAlert} from './alert'
 
 import {
-    GET_LAND , LAND_ERROR, CLEAR_LAND,  GET_LANDS , BUY_LAND, GET_LAND_HISTORY
+    GET_LAND , LAND_ERROR, CLEAR_LAND,  GET_LANDS , BUY_LAND, GET_LAND_HISTORY,
+    FABRIC_REGISTER,FABRIC_REGISTER_ERROR
 } from './types'
+
+
+//create a user account in fabric
+
+
+export const userRegister =(name) => async dispatch =>{
+
+    console.log(name)
+
+    try {
+        
+        const config = {
+            header : {
+              'Content-Type':'application/json'  
+            }
+        }
+        const formData={
+            username:`${name}`,
+            orgName:"Org1"
+
+        }
+        const res = await axios.post('/api/fabric/users',formData,config)
+        console.log(res)
+        dispatch({
+            type: FABRIC_REGISTER,
+            payload:res.data
+        })
+
+        dispatch(setAlert(`You have succesfully registered with username  ${name} in Hyperledger fabric network`, 'success',20000))
+
+       
+         
+        
+
+    } catch (err) {
+
+        dispatch({
+            type: FABRIC_REGISTER_ERROR,
+            payload : {msg: err.response.statusText, status: err.response.status}
+        })
+        
+        const errors = err.response.data.errors;
+ 
+        if(errors){
+        errors.forEach(error =>dispatch(setAlert(error.msg,'danger')))
+        }
+    }
+
+}
 
 
 
 
 // GET all lands of current user
-export const getCurrentOwnerLands =(ownerName="brad") => async dispatch =>{
+export const getCurrentOwnerLands =(ownerName) => async dispatch =>{
 
     // dispatch({
     //     type:CLEAR_PROFILE
@@ -19,8 +69,9 @@ export const getCurrentOwnerLands =(ownerName="brad") => async dispatch =>{
         const res = await axios.get(`/api/fabric/channels/mychannel/chaincodes/dRealEstate?args=${ownerName}&peer=peer0.org1.example.com&fcn=queryLandsByOwner`)
         dispatch({
             type: GET_LAND,
-            payload : res.data
+            payload : res.data.result
         })
+        //console.log(res)
     } catch (err) {
 
         dispatch({

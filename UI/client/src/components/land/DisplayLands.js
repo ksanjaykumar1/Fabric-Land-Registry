@@ -1,4 +1,5 @@
 import React ,{Fragment} from 'react'
+import {Link, Redirect} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import Moment from 'react-moment'
@@ -22,9 +23,14 @@ const DisplayLands = ({lands ,auth,buyLand,landHistory}) => {
         onClick={()=> buyLand(auth.user.name,lan.landID)
         }
         >BUY</button>:<button className='btn btn-danger'>NotForSale</button>}</td>
-    <td><button className='btn btn-success'
+    {/* <td><button className='btn btn-success'
     onClick={()=> landHistory(lan.landID)}
-    >Show Land History</button></td>
+    >Show Land History</button></td> */}
+    <td>
+    <Link to ={`/landhistory/${lan.landID}`} className="btn btn-primary my-1">
+                Land History
+            </Link>
+    </td>
         </tr>
     )) 
     
@@ -32,7 +38,7 @@ const DisplayLands = ({lands ,auth,buyLand,landHistory}) => {
     return (
         <Fragment>
             
-            <h2 className="my2">Land Details</h2>
+            <h2 className="my2">Property Details</h2>
             <table className='table'>
                 <thead>
                     <tr>

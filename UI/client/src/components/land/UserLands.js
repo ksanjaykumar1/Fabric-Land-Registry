@@ -7,22 +7,19 @@ import DisplayLands from './DisplayLands'
 // import ProfileItem from './ProfileItem'
 
 
-const Lands = ({land:{alllands,loading},getLands,getCurrentOwnerLands, profile:{profile}}) => {
+const UserLands = ({land:{land,loading},getLands,getCurrentOwnerLands, profile:{profile}}) => {
 
     useEffect(() => {
-        getLands()
-        //getCurrentOwnerLands("Sanjay")
+        
+        getCurrentOwnerLands(profile.fabricUsername)
     }, [])
     return (
         <div>
             {loading ?<Spinner/>:
             <Fragment>
-                <h1 className="large text-primary">Properties</h1>
-                <p className="lead">
-                    <i className="fab fa-connectdevelop">Browse and Buy Properties</i>
-                </p>
+                <h1 className="large text-primary"> Your Properties</h1>
                
-               <DisplayLands lands={alllands}/>
+               <DisplayLands lands={land}/>
 
             </Fragment>}
             
@@ -35,7 +32,7 @@ const mapToStateProps =state=>({
     profile : state.profile
 
 })
-Lands.propTypes = {
+UserLands.propTypes = {
     getLands:PropTypes.func.isRequired,
     land:PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired,
@@ -43,4 +40,4 @@ Lands.propTypes = {
 
 }
 
-export default connect(mapToStateProps,{getLands,getCurrentOwnerLands})(Lands)
+export default connect(mapToStateProps,{getLands,getCurrentOwnerLands})(UserLands)
