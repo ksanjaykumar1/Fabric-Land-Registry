@@ -31,9 +31,9 @@ function Login({login,isAuthenticated}) {
     const { email, password } = formData
     return (
         <Fragment>
-            <h1 className="large text-primary">Sign In</h1>
+            <h1 className="large text-primary">LOGIN</h1>
             <p className="lead">
-                <i className="fas fa-user"></i> Sign Into Your Account
+                <i className="fas fa-user"></i> Login  Into Your Account
             </p>
             <form className="form" onSubmit={e => onSubmit(e)}>
                 

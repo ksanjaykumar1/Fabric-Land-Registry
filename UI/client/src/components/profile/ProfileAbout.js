@@ -5,24 +5,29 @@ const ProfileAbout = ({
   profile: {
     bio,
     skills,
+    email,
+    phoneNumber,
     user: { name }
   }
 }) => (
   <div className='profile-about bg-light p-2'>
     {bio && (
       <Fragment>
-        <h2 className='text-primary'>{name.trim().split(' ')[0]}s Bio</h2>
+        <h2 className='text-primary'>{name.trim().split(' ')[0]}'s Bio</h2>
         <p>{bio}</p>
         <div className='line' />
       </Fragment>
     )}
-    <h2 className='text-primary'>Skill Set</h2>
+    <h2 className='text-primary'>Contact Details</h2>
     <div className='skills'>
-      {skills.map((skill, index) => (
-        <div key={index} className='p-1'>
-          <i className='fas fa-check' /> {skill}
+    
+        <div  className='p-1'>
+          <i className='fas fa-phone fa-2x' /> {phoneNumber}
         </div>
-      ))}
+        <div  className='p-1'>
+          <i className='fas fa-envelope-square fa-2x' /> {email}
+        </div>
+ 
     </div>
   </div>
 );

@@ -5,7 +5,7 @@ const ProfileTop = ({
   profile: {
     status,
     company,
-    location,
+    address,
     website,
     social,
     user: { name, avatar }
@@ -16,10 +16,10 @@ const ProfileTop = ({
       <img className="round-img my-1" src={avatar} alt="" />
       <h1 className="large">{name}</h1>
       <p className="lead">
-        {status} {company ? <span> at {company}</span> : null}
+        {status} 
       </p>
-      <p>{location ? <span>{location}</span> : null}</p>
-      <div className="icons my-1">
+      <p>{address ? <span>{address}</span> : null}</p>
+      {/* <div className="icons my-1">
         {website ? (
           <a href={website} target="_blank" rel="noopener noreferrer">
             <i className="fas fa-globe fa-2x" />
@@ -39,7 +39,7 @@ const ProfileTop = ({
                 </a>
               ))
           : null}
-      </div>
+      </div> */}
     </div>
   );
 };

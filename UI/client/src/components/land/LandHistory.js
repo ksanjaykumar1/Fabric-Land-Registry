@@ -12,13 +12,18 @@ const LandHistory = ({landHistory,land:{landhistory},match}) => {
       }, [landHistory, match.params.landId]);
 
       const allhistory=landhistory.map(lan =>(
+          
           <tr key={lan.txId}>
               <td>{lan.txId}</td>
               <td>{lan.record.owner}</td>
-              <td>{lan.timestamp}</td>
+              <td>{lan.timestamp.substring(0,10)}</td>
+              <td>{lan.timestamp.substring(11,19)}</td>
 
           </tr>
       ))
+    //   const ldate= (timestamp)=>{
+    //       return()
+    //   }
     
     return (
        <Fragment>
@@ -29,7 +34,8 @@ const LandHistory = ({landHistory,land:{landhistory},match}) => {
                         <thead>
                             <th>Transaction Id</th>
                             <th>Owner </th>
-                            <th>Timestamp </th>
+                            <th>Date </th>
+                            <th>Time </th>
                         </thead>
                         <tbody>{allhistory}</tbody>
 

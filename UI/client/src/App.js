@@ -22,6 +22,7 @@ import Profile from './components/profile/Profile';
 import Lands from './components/land/Lands';
 import LandHistory from './components/land/LandHistory';
 import AddLand from './components/land/AddLand';
+import ProfileLand from './components/land/ProfileLand';
 
 
 if(localStorage.token){
@@ -57,6 +58,7 @@ const  App= () =>{
 
             <Route exact path='/lands' component={Lands}/>
             <Route exact path='/landhistory/:landId' component={LandHistory}/>
+            <Route exact path='/profileland/:fabricUsername' component={ProfileLand}/>
             <PrivateRoute exact path="/add-land" component={AddLand}/>
           </Switch>
         </section>
